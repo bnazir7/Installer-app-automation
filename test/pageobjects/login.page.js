@@ -8,27 +8,27 @@ class LoginPage extends Page {
   /**
    * define selectors using getter methods
    */
-  get inputUsername() {
-       return $("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]");
-
-
-    // return $(`xpath{/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]}`);
+  async inputUsername() {
+       const emailInput = $('/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]');
+         await emailInput.click()
+         await emailInput.setValue('superadmin@dcarb.com');
   }
 
 
-  get inputPassword() {
-      return $("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]");
+  async inputPassword() {
+    const passwordInput = $('/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]');
+     await passwordInput.click()
+     await passwordInput.setValue('123456');
+     await driver.hideKeyboard();
   }
 
-//   const passwordInput = $(
-//        "xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]"
-//      );
+
 
   async btnSubmit() {
   const Login_icon = '~Login'
   $(Login_icon).click()
   browser.pause(15000)
-//     return $(`android=new UiSelector().description("Login")`);
+
   }
 
   /**
@@ -36,9 +36,10 @@ class LoginPage extends Page {
    * e.g. to login using username and password
    */
   async login(username, password) {
-    await this.inputUsername.setValue(username);
-    await this.inputPassword.setValue(password);
-//    await this.btnSubmit()
+
+    await this.inputUsername()
+    await this.inputPassword()
+
   }
 
   /**
