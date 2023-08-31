@@ -24,7 +24,7 @@ exports.config = {
   // then the current working directory is where your `package.json` resides, so `wdio`
   // will be called from there.
   //
-  specs: ["./test/specs/**/*.js"],
+  specs: ["./E2E_Installer_APP/specs/**/*.js"],
   // Patterns to exclude.
   exclude: [
     // 'path/to/excluded/files'
@@ -56,7 +56,7 @@ exports.config = {
          // capabilities for local Appium web tests on an Android Emulator
          platformName: "Android",
          "appium:deviceName": "Dcarb-Mobile",
-         "appium:app": path.join(process.cwd(), "app/android/mobile-team1.0.7.apk"),
+         "appium:app": path.join(process.cwd(), "InstallerAppApk/android/mobile-team1.0.7.apk"),
          "appium:platformVersion": "10",
          "appium:automationName": "UIAutomator2",
          "appium:appPackage":"com.dcarb.teams",
